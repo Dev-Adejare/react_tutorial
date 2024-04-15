@@ -45,16 +45,23 @@ function App() {
   }, [posts, search])
   
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     const id = posts.length ? posts[posts.length -1].id + 1 : 1
     const dateTime = format (new Date(), 'MMMM dd, yyyy pp' )
-    const newPost = {id, title: postTitle, dateTime, body: PostBody }
-    const allPosts = [...posts, newPost]
-    setPosts(allPosts)
-    setPostTitle('')
-    setPostBody('')
-    navigate('/')
+    const newPost = {id, title: postTitle, dateTime, body: PostBody };
+
+    try {
+      const response = await api.post("/posts", newPost)
+      const allPosts = [...posts, newPost]
+      setPosts(allPosts)
+      setPostTitle('')
+      setPostBody('')
+      navigate('/')
+    } catch (error) {
+      
+    }
   }
   const handleDelete = (id) => {
     const postList = posts.filter((post) => post.id !== id);
