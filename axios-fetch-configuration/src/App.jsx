@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import api from "./api/post";
 import EditPost from "./EditPost";
+import useWindowSize from "../hooks/useWindowSize";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -22,6 +23,7 @@ function App() {
   const [postBody, setPostBody] = useState("");
   const [editPostTitle, setEditPostTitle] = useState("");
   const [editPostBody, setEditPostBody] = useState("");
+  const {width} = useWindowSize()
 
   //STEP 1
   useEffect(() => {
@@ -110,7 +112,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header title="DLT Blogs" />
+      <Header title="DLT Blogs" width={width}/>
       <Nav search={search} setsearch={setSearch} />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
