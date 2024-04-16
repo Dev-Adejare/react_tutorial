@@ -13,6 +13,7 @@ import api from "./api/post";
 import EditPost from "./EditPost";
 import useWindowSize from "../hooks/useWindowSize";
 import useAxiosFetch from "../hooks/useAxiosFetch";
+import { DataProvider } from "./context/DataContext";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -24,8 +25,9 @@ function App() {
   const [postBody, setPostBody] = useState("");
   const [editPostTitle, setEditPostTitle] = useState("");
   const [editPostBody, setEditPostBody] = useState("");
-  const {width} = useWindowSize();
-  const { data, fetchError, isLoading } = useAxiosFetch("http://localhost::4000/posts")
+  const { width } = useWindowSize();
+  const { data, fetchError, isLoading } = useAxiosFetch("http://localhost:2500/posts")
+  console.log(data)
 
   //STEP 1
   // useEffect(() => {
@@ -54,6 +56,8 @@ function App() {
   useEffect(() => {
     setPosts (data);
   }, [data])
+
+  
 
   useEffect(() => {
     const filteredResults = posts.filter(
@@ -118,6 +122,7 @@ function App() {
   return (
     <div className="App">
       <Header title="DLT Blogs" width={width}/>
+      <DataProvider>
       <Nav search={search} setsearch={setSearch} />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
@@ -162,6 +167,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Routes>
+      </DataProvider>
       <Footer />
     </div>
   );
