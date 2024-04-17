@@ -13,8 +13,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import api from "./api/post";
-import useWindowSize from "../hooks/useWindowSize";
-import useAxiosFetch from "../hooks/useAxiosFetch";
+import useWindowSize from "./hooks/useWindowSize";
+import useAxiosFetch from "./hooks/useAxiosFetch";
 import { DataProvider } from "./context/DataContext";
 
 function App() {
@@ -101,7 +101,7 @@ function App() {
   return (
     <div className="App">
       <DataProvider>
-      <Header title="DLT Blogs" width={width}/>
+      <Header title="DLT Blogs"/>
       <Nav search={search} setsearch={setSearch} />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
