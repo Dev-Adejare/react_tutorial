@@ -92,7 +92,7 @@ export const DataProvider = ({children}) => {
         <DataContext.Provider value= {{
             width, search, setSearch, searchResults, fetchError, isLoading,
             handleSubmit, postTitle, setPostTitle, postBody, setPostBody,
-            posts,handleEdit,editPostBody,setEditPostBody, editPostTitle, setEditPostTitle,
+            posts,handleEdit,editPostBody,setEditPostBody, editPostTitle, setEditPostTitle, handleDelete
 
 
         }}>

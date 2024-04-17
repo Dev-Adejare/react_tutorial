@@ -110,31 +110,14 @@ function App() {
         <Route path="/" element={<Home  />} />
 
         {/* Step 1*/}
-        <Route
-          path="/post"
-          element={
-            <NewPost />}
-        />
+        <Route path="/post"element={<NewPost />}/>
 
-        <Route
-          path="/edit/:id"
-          element={
-            <EditPost
-              posts={posts}
-              handleEdit={handleEdit}
-              editPostTitle={editPostTitle}
-              setEditPostTitle={setEditPostTitle}
-              editPostBody={editPostBody}
-              setEditPostBody={setEditPostBody}
-            />
-          }
-        />
+        <Route path="/edit/:id"element={<EditPost/>}/>
 
-        <Route
-          path="/post/:id"
-          element={<PostPage posts={posts} handleDelete={handleDelete} />}
-        />
+        <Route path="/post/:id"element={<PostPage />}/>
+        
         <Route path="/about" element={<About />} />
+        
         <Route path="*" element={<Missing />} />
       </Routes>
       <Footer />
