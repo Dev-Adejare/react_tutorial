@@ -102,27 +102,18 @@ function App() {
     <div className="App">
       <DataProvider>
       <Header title="DLT Blogs"/>
-      <Nav search={search} setsearch={setSearch} />
+      <Nav />
       <Routes>
         {/* <Route path="/" element={<Home posts={posts} />} /> */}
 
         {/* Step 3 */}
-        <Route path="/" element={<Home posts={searchResults}
-        fetchError = {fetchError}
-        isLoading = {isLoading} />} />
+        <Route path="/" element={<Home  />} />
 
         {/* Step 1*/}
         <Route
           path="/post"
           element={
-            <NewPost
-              handleSubmit={handleSubmit}
-              postTitle={postTitle}
-              setPostTitle={setPostTitle}
-              postBody={postBody}
-              setPostBody={setPostBody}
-            />
-          }
+            <NewPost />}
         />
 
         <Route
